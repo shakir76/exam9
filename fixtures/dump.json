@@ -1,0 +1,241 @@
+[
+{
+  "model": "webapp.photo",
+  "pk": 1,
+  "fields": {
+    "avatar": "avatars/photo1658686562_1_cLA4hEU.jpeg",
+    "signature": "new",
+    "created_at": "2022-09-24T05:58:31.830Z",
+    "author": 1,
+    "album": null,
+    "private": false,
+    "favorites": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 2,
+  "fields": {
+    "avatar": "avatars/WhatsApp_Image_2022-08-20_at_20.49.54.jpeg",
+    "signature": "hahah",
+    "created_at": "2022-09-24T06:09:13.056Z",
+    "author": 1,
+    "album": 2,
+    "private": false,
+    "favorites": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 3,
+  "fields": {
+    "avatar": "avatars/photo1658686562.jpeg",
+    "signature": "ыгяфу",
+    "created_at": "2022-09-24T06:46:12.026Z",
+    "author": 1,
+    "album": 2,
+    "private": true,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 5,
+  "fields": {
+    "avatar": "avatars/premium-icon-edit-4007762_ySyfmBG.png",
+    "signature": "new",
+    "created_at": "2022-09-24T07:55:35.322Z",
+    "author": 2,
+    "album": null,
+    "private": true,
+    "favorites": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 6,
+  "fields": {
+    "avatar": "avatars/x1127.jpg",
+    "signature": "new",
+    "created_at": "2022-09-24T07:55:45.437Z",
+    "author": 2,
+    "album": null,
+    "private": false,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 7,
+  "fields": {
+    "avatar": "avatars/3409_1_82HZ2zG.jpg",
+    "signature": "zara",
+    "created_at": "2022-09-24T08:30:48.577Z",
+    "author": 2,
+    "album": 2,
+    "private": true,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 9,
+  "fields": {
+    "avatar": "avatars/tramp-compact-trr-004.jpg",
+    "signature": "test",
+    "created_at": "2022-09-24T09:10:12.470Z",
+    "author": 1,
+    "album": null,
+    "private": true,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 10,
+  "fields": {
+    "avatar": "avatars/photo1658686562_wIika9w.jpeg",
+    "signature": "test albom",
+    "created_at": "2022-09-24T09:10:41.396Z",
+    "author": 1,
+    "album": 4,
+    "private": true,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 11,
+  "fields": {
+    "avatar": "avatars/photo1658686562_nAHSvPw.jpeg",
+    "signature": "privete",
+    "created_at": "2022-09-24T09:11:14.988Z",
+    "author": 1,
+    "album": 5,
+    "private": false,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 12,
+  "fields": {
+    "avatar": "avatars/photo1658686562_mpe2e1k.jpeg",
+    "signature": "new",
+    "created_at": "2022-09-24T09:45:50.581Z",
+    "author": 2,
+    "album": 6,
+    "private": false,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 13,
+  "fields": {
+    "avatar": "avatars/msg1573356660-10833_vfjSy4O.jpg",
+    "signature": "zara",
+    "created_at": "2022-09-24T12:13:13.410Z",
+    "author": 1,
+    "album": 7,
+    "private": false,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 1,
+  "fields": {
+    "name": "new",
+    "description": "news",
+    "author_album": 1,
+    "created_at": "2022-09-24T06:08:56.399Z",
+    "private": false,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 2,
+  "fields": {
+    "name": "Voata da",
+    "description": "dada",
+    "author_album": 2,
+    "created_at": "2022-09-24T07:00:55.691Z",
+    "private": false,
+    "favorites": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 4,
+  "fields": {
+    "name": "test albon",
+    "description": "d",
+    "author_album": 1,
+    "created_at": "2022-09-24T09:10:24.944Z",
+    "private": false,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 5,
+  "fields": {
+    "name": "privet",
+    "description": "sdasdas",
+    "author_album": 1,
+    "created_at": "2022-09-24T09:11:03.842Z",
+    "private": true,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 6,
+  "fields": {
+    "name": "2019",
+    "description": "2019",
+    "author_album": 2,
+    "created_at": "2022-09-24T09:48:15.958Z",
+    "private": true,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 7,
+  "fields": {
+    "name": "admin grup",
+    "description": "admin grup",
+    "author_album": 1,
+    "created_at": "2022-09-24T12:12:56.797Z",
+    "private": false,
+    "favorites": []
+  }
+},
+{
+  "model": "webapp.newurls",
+  "pk": 1,
+  "fields": {
+    "link_url": "d94cd6ea6f804e9e8d6b1b0f3e13d4f1",
+    "photo": 1
+  }
+},
+{
+  "model": "webapp.newurls",
+  "pk": 2,
+  "fields": {
+    "link_url": "3e00bbff801842aa84e50b9eda15d286",
+    "photo": 2
+  }
+}
+]
