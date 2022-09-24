@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block nav %}
+    {#    {% if  user.groups.all.0.name == 'moderators' %}#}
+    {#        <li class="nav-item">#}
+    {#            <a class="nav-link" href="{% url 'webapp:create_product' %}">Добавить Продукт</a>#}
+    {#        </li>#}
+    {#        <li class="nav-item">#}
+    {#            <a class="nav-link" href="{% url 'webapp:index_review' %}">Модерация</a>#}
+    {#        </li>#}
+    {#    {% endif %}#}
+{% endblock %}
+{% block content %}
+    <h1 class="text-success">Галерея</h1>
+    <div class="row">
+        {% for photo in photos %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card bg-warning ">
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="fs-3">{{ photo.signature }}</span></h5>
+                        <img src="{{ photo.avatar.url }}" class="card-img-top w-100" alt="...">
+                        <p>Автор: {{ photo.author }}</p>
+                        <p>Дата: {{ photo.created_at }}</p>
+                        {% if  photo.album %}
+                            <a href="#">Ссылка на альбом</a>
+                        {% else %}
+                            <p>Альбома нету</p>
+                        {% endif %}
+                        {#                        <p class="bg-warning"><a href="#"><img#}
+                        {#                                src="http://s1.iconbird.com/ico/2013/6/272/w128h1281371312762PixelKit00451.png"#}
+                        {#                                width="25"#}
+                        {#                                height="25" alt="Редактирование"></a>#}
+                        {#                            <a href="#"><img#}
+                        {#                                    src="https://mywebicons.ru/i/png/41b36a245ba5bd7dd66a600e410f853e.png"#}
+                        {#                                    width="25"#}
+                        {#                                    height="25" alt="Удаления"></a>#}
+                        {#                        </p>#}
+                        <p><a href="{% url 'webapp:view_photo' photo.pk %}"><img
+                                src="https://ru.seaicons.com/wp-content/uploads/2015/10/Preview-icon2.png"
+                                width="25"
+                                height="25" alt="Просмотр"></a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

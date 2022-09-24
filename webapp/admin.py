@@ -18,7 +18,7 @@ class AlbumAdmin(admin.ModelAdmin):
     list_display_links = ['name']
     list_filter = ['name']
     search_fields = ['name']
-    fields = ['name', 'description', 'author', 'created_at']
+    fields = ['name', 'description', 'author_album', 'created_at']
     readonly_fields = ['created_at']
 
 

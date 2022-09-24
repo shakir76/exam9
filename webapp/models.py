@@ -11,8 +11,9 @@ class Photo(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="authors",
                                verbose_name="Автор")
     album = models.ForeignKey('webapp.Album', on_delete=models.CASCADE, related_name="albums",
-                              blank=True, verbose_name="Описание")
+                              null=True, blank=True, verbose_name="Альбом")
     private = models.BooleanField(default=False, verbose_name='Приватный')
+    favorites = models.ManyToManyField(get_user_model(), related_name="favorites_photo")
 
     def __str__(self):
         return f"{self.id}. {self.author}: {self.signature}"
@@ -30,8 +31,10 @@ class Album(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название")
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Описание")
     author_album = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="authors_album",
-                               verbose_name="Автор")
+                                     verbose_name="Автор")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    private = models.BooleanField(default=False, verbose_name='Приватный')
+    favorites = models.ManyToManyField(get_user_model(), related_name="favorites_album")
 
     def __str__(self):
         return f"{self.id}. {self.name}: {self.author_album}"

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Просмотр фото{% endblock %}
+{% block nav %}
+    {#    {% if request.user.is_authenticated  %}#}
+    {#    <li class="nav-item">#}
+    {#        <a class="nav-link" href="{% url "accounts:change_profile"  %}">Редактирования</a>#}
+    {#    </li>#}
+    {#    <li class="nav-item">#}
+    {#        <a class="nav-link" href="{% url 'accounts:change_password' %}">Сменить пароль</a>#}
+    {#    </li>#}
+    {#    {% endif %}#}
+{% endblock %}
+{% block content %}
+    <div class="card flex-row mt-3">
+        <img src="{{ photo.avatar.url }}" class="card-img-top w-25" alt="...">
+        <div class="card-body ms-5">
+            <h5 class="card-title">Подпись: {{ photo.signature }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Автор: {{ photo.author }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Дата: {{ photo.created_at }}</h6>
+            {% if  photo.album %}
+                 <a href="#">Ссылка на альбом</a>
+            {% else %}
+                 <h6 class="card-subtitle mb-2 text-muted">Альбома нету</h6>
+            {% endif %}
+        </div>
+    </div>
+{#    {% include 'partial/list_partial.html' %}#}
+{% endblock %}
