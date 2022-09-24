@@ -1,13 +1,16 @@
+from uuid import uuid4
+
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from webapp.forms import PhotoForm
-from webapp.models import Photo, Album
+from webapp.models import Photo, Album, NewUrls
 
 
 class ListPhoto(LoginRequiredMixin, ListView):
@@ -69,3 +72,11 @@ class PhotoDeleteView(PermissionRequiredMixin, DeleteView):
 
     def has_permission(self):
         return super().has_permission() or self.get_object().author == self.request.user
+
+
+class GetUrls(View):
+    def get(self, request, *args, **kwargs):
+        photo = get_object_or_404(Photo, pk=self.kwargs.get('pk'))
+        links = uuid4().hex
+        NewUrls.objects.create(photo=photo, link_url=links)
+        return redirect('webapp:view_photo', pk=photo.pk)

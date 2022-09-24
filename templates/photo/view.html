@@ -27,6 +27,13 @@
             <h5 class="card-title">Подпись: {{ photo.signature }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Автор: {{ photo.author }}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Дата: {{ photo.created_at }}</h6>
+            {% if  photo.author == request.user %}
+                {% if  photo.urls_photo %}
+                    <a href="{% url 'webapp:get_urls' photo.pk %}">Ссылка на фото </a>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'webapp:get_urls' photo.pk %}">Сгерерировать URL</a>
+                {% endif %}
+            {% endif %}
             {% if  photo.album %}
                 <a href="{% url 'webapp:view_album' photo.album.pk %}">Ссылка на альбом</a>
             {% else %}

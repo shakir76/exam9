@@ -43,3 +43,9 @@ class Album(models.Model):
         db_table = "Album"
         verbose_name = "Альбом"
         verbose_name_plural = "Альбомы"
+
+
+class NewUrls(models.Model):
+    link_url = models.CharField(max_length=150, verbose_name="Ссылка")
+    photo = models.OneToOneField('webapp.Photo', on_delete=models.CASCADE, verbose_name="Фото ссылки",
+                                 related_name="urls_photo")

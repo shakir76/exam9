@@ -3,7 +3,7 @@ from django.urls import path
 # from webapp.photo.photo import ListProduct
 #
 from webapp.photo import ListPhoto, PhotoView, PhotoCreateView, PhotoUpdateView, PhotoDeleteView, CreateAlbumView, \
-    AlbumDetailView, AlbumUpdateView, AlbumDeleteView
+    AlbumDetailView, AlbumUpdateView, AlbumDeleteView, GetUrls
 
 app_name = 'webapp'
 #
@@ -17,5 +17,6 @@ urlpatterns = [
     path('album/<int:pk>/view/', AlbumDetailView.as_view(), name="view_album"),
     path('album/<int:pk>/delete/', AlbumDeleteView.as_view(), name="delete_album"),
     path('album/<int:pk>/update', AlbumUpdateView.as_view(), name="update_album"),
+    path('gets/links/<int:pk>/', GetUrls.as_view(), name="get_urls"),
 
 ]
