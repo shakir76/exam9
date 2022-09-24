@@ -2,9 +2,9 @@
 {% load static %}
 {% block nav %}
     {#    {% if  user.groups.all.0.name == 'moderators' %}#}
-    {#        <li class="nav-item">#}
-    {#            <a class="nav-link" href="{% url 'webapp:create_product' %}">Добавить Продукт</a>#}
-    {#        </li>#}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url "webapp:create_photo" %}">Добавить фото</a>
+    </li>
     {#        <li class="nav-item">#}
     {#            <a class="nav-link" href="{% url 'webapp:index_review' %}">Модерация</a>#}
     {#        </li>#}
@@ -18,7 +18,7 @@
                 <div class="card bg-warning ">
                     <div class="card-body">
                         <h5 class="card-title"><span class="fs-3">{{ photo.signature }}</span></h5>
-                        <img src="{{ photo.avatar.url }}" class="card-img-top w-100" alt="...">
+                        <img src="{{ photo.avatar.url }}" class="card-img-top  w-100" alt="...">
                         <p>Автор: {{ photo.author }}</p>
                         <p>Дата: {{ photo.created_at }}</p>
                         {% if  photo.album %}

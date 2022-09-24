@@ -18,8 +18,8 @@ class Photo(models.Model):
     def __str__(self):
         return f"{self.id}. {self.author}: {self.signature}"
 
-    # def get_absolute_url(self):
-    #     return reverse('webapp:index')
+    def get_absolute_url(self):
+        return reverse('webapp:index')
 
     class Meta:
         db_table = "Photo"

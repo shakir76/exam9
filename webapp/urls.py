@@ -2,14 +2,14 @@ from django.urls import path
 
 # from webapp.photo.photo import ListProduct
 #
-from webapp.photo import ListPhoto, PhotoView
+from webapp.photo import ListPhoto, PhotoView, PhotoCreateView
 
 app_name = 'webapp'
 #
 urlpatterns = [
     path('', ListPhoto.as_view(), name="index"),
-    # path('product/create/', CreateProduct.as_view(), name="create_product"),
-    path('product/<int:pk>/', PhotoView.as_view(), name="view_photo"),
+    path('photo/create/', PhotoCreateView.as_view(), name="create_photo"),
+    path('photo/<int:pk>/', PhotoView.as_view(), name="view_photo"),
     # path('product/<int:pk>/update', UpdateProduct.as_view(), name="update_product"),
     # path('product/<int:pk>/delete', DeleteProduct.as_view(), name="delete_product"),
     # path('product/<int:pk>/add/review', AddReview.as_view(), name="add_review"),

@@ -2,6 +2,9 @@
 {% block title %}Просмотр фото{% endblock %}
 {% block nav %}
     {#    {% if request.user.is_authenticated  %}#}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url "webapp:create_photo" %}">Добавить фото</a>
+    </li>
     {#    <li class="nav-item">#}
     {#        <a class="nav-link" href="{% url "accounts:change_profile"  %}">Редактирования</a>#}
     {#    </li>#}
@@ -18,11 +21,17 @@
             <h6 class="card-subtitle mb-2 text-muted">Автор: {{ photo.author }}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Дата: {{ photo.created_at }}</h6>
             {% if  photo.album %}
-                 <a href="#">Ссылка на альбом</a>
+                <a href="#">Ссылка на альбом</a>
             {% else %}
-                 <h6 class="card-subtitle mb-2 text-muted">Альбома нету</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Альбома нету</h6>
             {% endif %}
+{#            <h6 class="card-subtitle mb-2 text-muted">Избранные:</h6>#}
+{#            {% for user in photo.favorites %}#}
+{#                <a href="#">{{ user.username }}</a>#}
+{#            {% empty %}#}
+{#                <p>Избранных нету</p>#}
+{#            {% endfor %}#}
         </div>
     </div>
-{#    {% include 'partial/list_partial.html' %}#}
+    {#    {% include 'partial/list_partial.html' %}#}
 {% endblock %}
