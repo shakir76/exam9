@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Просмотр фото{% endblock %}
 {% block nav %}
-    {#    {% if request.user.is_authenticated  %}#}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url "webapp:create_photo" %}">Добавить фото</a>
-    </li>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:create_photo" %}">Добавить фото</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:add_album" %}">Добавить Альбом</a>
+        </li>
+    {% endif %}
+    {% if photo.author == request.user or perms.webapp.change_photo %}
         <li class="nav-item">
             <a class="nav-link" href="{% url "webapp:update_photo"  photo.pk %}">Редактирования</a>
         </li>
+    {% endif %}
+    {% if photo.author == request.user or perms.webapp.delete_photo %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'webapp:delete_photo' photo.pk %}">Удалить фото</a>
         </li>
-{#        {% endif %}#}
+    {% endif %}
 {% endblock %}
 {% block content %}
     <div class="card flex-row mt-3">
@@ -21,16 +28,16 @@
             <h6 class="card-subtitle mb-2 text-muted">Автор: {{ photo.author }}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Дата: {{ photo.created_at }}</h6>
             {% if  photo.album %}
-                <a href="#">Ссылка на альбом</a>
+                <a href="{% url 'webapp:view_album' photo.album.pk %}">Ссылка на альбом</a>
             {% else %}
                 <h6 class="card-subtitle mb-2 text-muted">Альбома нету</h6>
             {% endif %}
-{#            <h6 class="card-subtitle mb-2 text-muted">Избранные:</h6>#}
-{#            {% for user in photo.favorites %}#}
-{#                <a href="#">{{ user.username }}</a>#}
-{#            {% empty %}#}
-{#                <p>Избранных нету</p>#}
-{#            {% endfor %}#}
+            {#            <h6 class="card-subtitle mb-2 text-muted">Избранные:</h6>#}
+            {#            {% for user in photo.favorites %}#}
+            {#                <a href="#">{{ user.username }}</a>#}
+            {#            {% empty %}#}
+            {#                <p>Избранных нету</p>#}
+            {#            {% endfor %}#}
         </div>
     </div>
     {#    {% include 'partial/list_partial.html' %}#}

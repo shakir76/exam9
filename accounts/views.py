@@ -33,7 +33,7 @@ class RegisterView(CreateView):
         return next_url
 
 
-class ProfileView(DetailView):
+class ProfileView(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = 'profile_view.html'
 

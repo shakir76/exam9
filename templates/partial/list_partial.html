@@ -6,6 +6,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><span class="fs-3">{{ photo.signature }}</span></h5>
                     <img src="{{ photo.avatar.url }}" class="card-img-top  w-100" alt="...">
+
                     <p>Автор: <a href="{% url 'accounts:profile_view' photo.author.pk %}">{{ photo.author }}</a></p>
                     <p>Дата: {{ photo.created_at }}</p>
                     {% if  photo.album %}

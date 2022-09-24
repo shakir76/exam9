@@ -6,7 +6,6 @@ from accounts.models import Profile
 
 
 class MyUserCreationForm(UserCreationForm):
-    email = forms.EmailField(label="Email", required=True, )
 
     class Meta(UserCreationForm.Meta):
         fields = ['username', 'password1', 'password2', 'first_name', 'last_name', 'email']
