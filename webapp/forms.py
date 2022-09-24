@@ -13,3 +13,9 @@ class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
         fields = ['avatar', 'signature', 'album', 'private']
+
+
+class AlbumForm(forms.ModelForm):
+    class Meta:
+        model = Album
+        fields = ['name', 'description', 'private']

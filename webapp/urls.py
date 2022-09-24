@@ -2,7 +2,8 @@ from django.urls import path
 
 # from webapp.photo.photo import ListProduct
 #
-from webapp.photo import ListPhoto, PhotoView, PhotoCreateView, PhotoUpdateView, PhotoDeleteView
+from webapp.photo import ListPhoto, PhotoView, PhotoCreateView, PhotoUpdateView, PhotoDeleteView, CreateAlbumView, \
+    AlbumDetailView, AlbumUpdateView, AlbumDeleteView
 
 app_name = 'webapp'
 #
@@ -12,9 +13,9 @@ urlpatterns = [
     path('photo/<int:pk>/', PhotoView.as_view(), name="view_photo"),
     path('photo/<int:pk>/update', PhotoUpdateView.as_view(), name="update_photo"),
     path('photo/<int:pk>/delete', PhotoDeleteView.as_view(), name="delete_photo"),
-    # path('product/<int:pk>/add/review', AddReview.as_view(), name="add_review"),
-    # path('product/<int:pk>/update/review', UpdateReview.as_view(), name="update_review"),
-    # path('product/<int:pk>/delete/review', DeleteReview.as_view(), name="delete_review"),
-    # path('review/list', ListNotModerReView.as_view(), name="index_review"),
+    path('album/add', CreateAlbumView.as_view(), name="add_album"),
+    path('album/<int:pk>/view/', AlbumDetailView.as_view(), name="view_album"),
+    path('album/<int:pk>/delete/', AlbumDeleteView.as_view(), name="delete_album"),
+    path('album/<int:pk>/update', AlbumUpdateView.as_view(), name="update_album"),
 
 ]
