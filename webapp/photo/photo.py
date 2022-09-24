@@ -16,7 +16,7 @@ class ListPhoto(ListView):
     ordering = ('-created_at',)
 
     def get_queryset(self):
-        return Photo.objects.filter(Q(private=False) | Q(album__private=False))
+        return Photo.objects.filter(Q(private=False)).filter(Q(album__private=False))
 
 
 class PhotoView(DetailView):

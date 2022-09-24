@@ -10,6 +10,7 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from accounts.forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm
 from accounts.models import Profile
+from webapp.models import Photo, Album
 
 
 class RegisterView(CreateView):
@@ -35,6 +36,16 @@ class RegisterView(CreateView):
 class ProfileView(DetailView):
     model = get_user_model()
     template_name = 'profile_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user == self.object:
+            context['photos'] = Photo.objects.filter(author=self.object, )
+            context['albums'] = Album.objects.filter(author_album=self.object, )
+        else:
+            context['photos'] = Photo.objects.filter(author=self.object, private=False)
+            context['albums'] = Album.objects.filter(author_album=self.object, private=False)
+        return context
 
 
 class ChangeProfileView(PermissionRequiredMixin, UpdateView):

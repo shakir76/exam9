@@ -14,7 +14,6 @@ class MyUserCreationForm(UserCreationForm):
 
 
 class UserChangeForm(forms.ModelForm):
-    email = forms.EmailField(label="Email", required=True, )
     class Meta:
         model = get_user_model()
         fields = ['first_name', 'last_name', 'email']
