@@ -2,6 +2,7 @@ from uuid import uuid4
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
@@ -93,3 +94,15 @@ class PhotoGetURLS(View):
         photo = Photo.objects.get(urls_photo__link_url=pk)
         context = {'photo': photo}
         return render(request, 'photo/view.html', context=context)
+
+
+class AddFavorites(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        photo = get_object_or_404(Photo, pk=self.kwargs.get('pk'))
+        users = self.request.user
+        if users in photo.favorites.all():
+            photo.favorites.remove(users)
+        else:
+            photo.favorites.add(users)
+        photo_favorites = users in photo.favorites.all()
+        return JsonResponse({'user': photo_favorites})

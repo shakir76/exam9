@@ -18,6 +18,19 @@
                             src="https://ru.seaicons.com/wp-content/uploads/2015/10/Preview-icon2.png"
                             width="25"
                             height="25" alt="Просмотр"></a></p>
+                    {% if user.is_authenticated %}
+                        {% if request.user  in photo.favorites.all %}
+                            <button class="btn  btn-success news" data-new="{% url 'webapp:add_favorites' photo.pk %}">
+                                Удалить из
+                                избранного
+                            </button>
+                        {% else %}
+                            <button class="btn  btn-success news" data-new="{% url 'webapp:add_favorites' photo.pk %}">
+                                Добавить в
+                                избранные
+                            </button>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>

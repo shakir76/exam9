@@ -5,13 +5,28 @@
             <div class="card bg-warning ">
                 <div class="card-body">
                     <h5 class="card-title"><span class="fs-3">{{ album.name }}</span></h5>
-                    <p>Автор: <a href="{% url 'accounts:profile_view' album.author_album.pk %}">{{ album.author_album }}</a></p>
+                    <p>Автор: <a
+                            href="{% url 'accounts:profile_view' album.author_album.pk %}">{{ album.author_album }}</a>
+                    </p>
                     <p>Дата: {{ album.created_at }}</p>
                     <p>Описания: {{ album.description }}</p>
                     <p><a href="{% url 'webapp:view_album' album.pk %}"><img
                             src="https://ru.seaicons.com/wp-content/uploads/2015/10/Preview-icon2.png"
                             width="25"
                             height="25" alt="Просмотр"></a></p>
+                    {% if user.is_authenticated %}
+                        {% if request.user  in album.favorites.all %}
+                            <button class="btn  btn-success news" data-new="{% url 'webapp:add_favorites_album' album.pk %}">
+                                Удалить из
+                                избранного
+                            </button>
+                        {% else %}
+                            <button class="btn  btn-success news" data-new="{% url 'webapp:add_favorites_album' album.pk %}">
+                                Добавить в
+                                избранные
+                            </button>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>

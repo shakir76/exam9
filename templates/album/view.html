@@ -1,22 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Альбом Просмотр{% endblock title %}
 {% block nav %}
-{#    {% if user.is_authenticated and perms.webapp.change_album or is_author %}#}
-        <li class="nav-item">
-            <a class="nav-link text-light" href="{% url "webapp:update_album" album.pk %}">Изменить</a>
-        </li>
-{#    {% endif %}#}
-{#    {% if user.is_authenticated and perms.webapp.delete_album or is_author %}#}
-        <li class="nav-item">
-            <a class="nav-link text-light" href="{% url "webapp:delete_album"  album.pk %}">Удалить</a>
-        </li>
-{#    {% endif %}#}
+    {% if album.author_album == request.user or perms.webapp.change_album %}
+    <li class="nav-item">
+        <a class="nav-link text-light" href="{% url "webapp:update_album" album.pk %}">Изменить</a>
+    </li>
+        {% endif %}
+    {% if album.author_album == request.user or perms.webapp.delete_album%}
+    <li class="nav-item">
+        <a class="nav-link text-light" href="{% url "webapp:delete_album"  album.pk %}">Удалить</a>
+    </li>
+        {% endif %}
 {% endblock nav %}
 {% block content %}
     <div class="container">
         <h1>{{ album.name }}</h1>
         <p>Описания:{{ album.description }}</p>
         <p>Автор:{{ album.author_album }}</p>
+        {% if user.is_authenticated %}
+            {% if request.user in album.favorites.all %}
+                <button class="btn  btn-success news" data-new="{% url 'webapp:add_favorites_album' album.pk %}">
+                    Удалить из
+                    избранного
+                </button>
+            {% else %}
+                <button class="btn  btn-success news" data-new="{% url 'webapp:add_favorites_album' album.pk %}">
+                    Добавить в
+                    избранные
+                </button>
+            {% endif %}
+        {% endif %}
     </div>
-    {% include "partial/list_partial.html"%}
+    {% include "partial/list_partial.html" %}
 {% endblock content %}
+{% block script %}
+    <script src="{% static 'js/indexFavorit.js' %}"></script>
+{% endblock %}

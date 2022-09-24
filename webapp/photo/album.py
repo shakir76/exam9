@@ -1,6 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from webapp.forms import AlbumForm
@@ -56,3 +58,15 @@ class AlbumDeleteView(PermissionRequiredMixin, DeleteView):
 
     def has_permission(self):
         return super().has_permission() or self.get_object().author_album == self.request.user
+
+
+class AddFavoritesAlbum(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        album = get_object_or_404(Album, pk=self.kwargs.get('pk'))
+        users = self.request.user
+        if users in album.favorites.all():
+            album.favorites.remove(users)
+        else:
+            album.favorites.add(users)
+        album_favorites = users in album.favorites.all()
+        return JsonResponse({'user': album_favorites})
