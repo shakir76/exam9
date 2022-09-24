@@ -2,19 +2,14 @@ from django.contrib.auth import login, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordChangeView
-from django.core.paginator import Paginator
-from django.db.models import Q
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
-from django.utils.http import urlencode
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from accounts.forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm
 from accounts.models import Profile
-from webapp.forms import SearchForm
-from webapp.models import Review
 
 
 class RegisterView(CreateView):
@@ -40,14 +35,6 @@ class RegisterView(CreateView):
 class ProfileView(DetailView):
     model = get_user_model()
     template_name = 'profile_view.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        review = self.object.authors.all()
-        if not self.request.user.has_perm('webapp.view_moderation') and self.object != self.request.user:
-            review = review.filter(moderated=True)
-        context['reviews'] = review
-        return context
 
 
 class ChangeProfileView(PermissionRequiredMixin, UpdateView):
